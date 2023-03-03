@@ -1,0 +1,66 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    border: 1px solid;
+    width: 80%;
+    margin: 50px auto;
+
+}
+#root{
+    width: 100%;
+    margin: 50px auto;
+}
+
+.cart{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 10px;
+    padding: 15px 10px;
+    background-color: #E9A178;
+    border-radius: 10px;
+}
+.cart .quant{
+    background-color: #7A3E65;
+    padding: 5px 7px;
+    cursor: pointer;
+    user-select: none;
+    color: #fff;
+    font-weight: bold;
+}
+.cart button{
+    outline: none;
+    border: none;
+    background-color: red;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.cart i{
+    cursor: pointer;
+}
+
+.love{
+    color: red;
+    position: relative;
+    text-align: center;
+    line-height: 15px;
+}
+.love::after{
+    content: '1';
+    font-size: 7px;
+    color: #fff;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: red;
+    bottom: 20px;
+}
+
+.total{
+    margin: auto;
+    width: 80%;
+    text-align: right;
+}
