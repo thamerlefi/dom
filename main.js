@@ -1,3 +1,6 @@
+
+//declaration of items in array
+
 let items = [
   {id: 1,src: "1.jpg",name: "Oppo A20",price: "100",quantity: 1,liked: "unloved"},
   {id: 2,src: "2.jpg",name: "Dell Vostr",price: "200",quantity: 1,liked: "unloved"},
@@ -9,13 +12,13 @@ let container = document.getElementById("root");
 let total = 0; // total price
 let adore = 0; // number of total likes
 
-//-------------------------------------------------- show items
+//---------------------------------------------------------------------- show items
 function showData() {
-  // global function that will appear all of items (body)
-  let table = "";
+  // global function that will appear all of items (in #root)
+  let cartItems = "";
   for (let i = 0; i < items.length; i++) {
     let item = items[i];
-    table += `
+    cartItems += `
         <div class="cart">
             <img src="./img/${i + 1}.jpg" alt="${item.name}" title="${item.name}" class="img">
             <h5 class="num">${item.name}</h5>
@@ -30,7 +33,7 @@ function showData() {
         `;
         // concatenation of all the container (title, items and total price with numbers of likes)
     container.innerHTML = `<h1 class ="title">YOUR SHOPPING CART</h1> 
-                            ${table}
+                            ${cartItems}
                             <div class="total">
                                 <h4>Total : $ ${getTotal(i)}</h4>
                                 ${numOfLikes(i)}
@@ -48,9 +51,9 @@ function deleteItem(i) {
   if (items.length < 1) {
     container.innerHTML = `<h1 class="empty">Your cart is Empty !!</h1>`;
   }
-  adore = 0; // we need always to initialize "adore" and "total" (num of likes and total price) 
+  adore = 0; //     we need always to initialize "adore" and "total" (num of likes and total price) 
   total = 0; //     before calling showData
-  showData(); // after deleting an item always we need to recal showData to re-show the new update
+  showData(); //    after deleting an item always we need to recal showData to re-show the new update
 }
 
 //---------------------------------------------------- total price
@@ -85,11 +88,9 @@ function decrBtn(i) {
 function loveReact(i) {
   total = 0;
   adore = 0;
-  if (items[i].liked === "unloved") {
-    items[i].liked = "loved";   //if liked = "loved" so it will be added to the id of this icon id="loved"
-  } else {                      // id="${item.liked}" (show line number 28)
-    items[i].liked = "unloved";
-  }
+  items[i].liked === "unloved" ? items[i].liked = "loved":  //if liked = "loved" so it will be added to the id of this icon id="loved"
+  items[i].liked = "unloved";                                // id="${item.liked}" (show line number 30)
+
   showData();
 }
 //------------------------------------------------------------------ number of likes
@@ -102,5 +103,10 @@ function numOfLikes(i) {
 }
 /* 
 As far as I know, we must first modify elements in the object, then modify them in document,
-and then we must recal the function showData after each event... so what do you think !!
+and in order to be able to modify the document we need to recal the function showData after each event to reshow the new uptade,
+and finally we need to reinitialize total price and number of likes after each event and before calling showData...
+so what do you think !!
+
+Thamer Lefi
+DOM checkpoint
 */
