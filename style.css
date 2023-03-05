@@ -83,6 +83,7 @@
 }
 .cart i {
   cursor: pointer;
+  color: #0075ff;
 }
 
 /*--------------------------this id (#loved) will be added by js ------------------*/
