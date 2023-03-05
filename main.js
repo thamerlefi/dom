@@ -1,35 +1,35 @@
 //declaration of items in array
 let items = [
-  {id: 1,src: "1.jpg",name: "Oppo A20",price: "100",quantity: 1,liked: "unloved"},
-  {id: 2,src: "2.jpg",name: "Dell Vostr",price: "200",quantity: 1,liked: "unloved"},
-  {id: 3,src: "3.jpg",name: "MinTablt",price: "100",quantity: 1,liked: "unloved"},
-  {id: 4,src: "4.jpg",name: "Sumsung-",price: "100",quantity: 1,liked: "unloved"}
+  {id:1 ,src: "1.jpg", name: "Oppo A20",   price: "100", quantity:1 ,isLiked: "unliked"},
+  {id:2 ,src: "2.jpg", name: "Dell Vostr", price: "200", quantity:1 ,isLiked: "unliked"},
+  {id:3 ,src: "3.jpg", name: "MinTablt",   price: "100", quantity:1 ,isLiked: "unliked"},
+  {id:4 ,src: "4.jpg", name: "Sumsung-",   price: "100", quantity:1 ,isLiked: "unliked"},
 ];
+
 let container = document.getElementById("root");
 
 let total = 0; // total price
 let adore = 0; // total number of likes
-
 //---------------------------------------------------------------------- show items
 function showData() {
-  // global function that will appear all of items (in #root elemnet)
+  // global function that will appear all of items (in #root element)
 let cartItems = "";
 for (let i = 0; i < items.length; i++) {
     let item = items[i];
     cartItems += `
         <div class="cart">
-            <img src="./img/${i + 1}.jpg" alt="${item.name}" title="${item.name}" class="img">
+            <img src="./img/${item.src}" alt="${item.name}" title="${item.name}" class="img">
             <h5 class="num">${item.name}</h5>
             <h5 class="num">$ ${item.price}</h5>
             <h5 class="quant" onclick="decrBtn(${i})">-</h5>
             <h5 class="num">${item.quantity}</h5>
             <h5 class="quant" onclick="incrBtn(${i})">+</h5>
-            <h5 class="subTotal"">SubTotal: $ ${item.quantity * item.price}</h5>
+            <h5 class="subTotal">SubTotal: $ ${item.quantity * item.price}</h5>
             <button class="del" onclick="deleteItem(${i})">delete</button>
-            <i class="fa-regular fa-heart" id="${item.liked}" onclick="loveReact(${i})"></i>
+            <i class="fa-regular fa-heart" id="${item.isLiked}" onclick="loveReact(${i})"></i>
         </div>
         `;
-    // concatenation of all the container (title, items and total price with numbers of likes)
+    // concatenation of all the container (title, items, total price and numbers of likes)
     container.innerHTML = `<h1 class ="title">YOUR SHOPPING CART</h1> 
                             ${cartItems}
                             <div class="total">
@@ -41,10 +41,10 @@ for (let i = 0; i < items.length; i++) {
 
 showData(); // calling showData just when this file execute
 
-//---------------------------------------------------- delete items
+//---------------------------------------------------- delete items (from the array items)
 function deleteItem(i) {
   items.splice(i, 1);
-  // if there is no items a new paragraph will display
+  // if there is no items (items =[]) a new paragraph will display
   if (items.length < 1) {
     container.innerHTML = `<h1 class="empty">Your cart is Empty !!</h1>`;
   }
@@ -81,17 +81,17 @@ function decrBtn(i) {
 function loveReact(i) {
   total = 0;
   adore = 0;
-  items[i].liked === "unloved" ? items[i].liked = "loved":  //if liked = "loved" so it will be added to the id of this icon id="loved"
-  items[i].liked = "unloved";                                // id="${item.liked}" (show line number 30)
+  items[i].isLiked === "unliked" ? items[i].isLiked = "liked":  //if isLiked = "liked" so it will be added to the id of this icon id="liked"
+  items[i].isLiked = "unliked";                                // id="${item.isLiked}" (show line number 29)
 
   showData();
 }
 //------------------------------------------------------------------ number of likes
 function numOfLikes(i) {
-  if (items[i].liked === "loved") {
-    adore++; // if true so this item is liked so we need to add 1 the number of likes
+  if (items[i].isLiked === "liked") {
+    adore++; // if true so this item is Liked so we need to add 1 to the number of likes
   }
-  if (adore === 0) return ""; // if there is no like so this element will not displayed 
+  if (adore === 0) return ""; // if there is no like so this element will not be displayed 
   return `<h3 class="adore">Like : ${adore}</h3>`;
 }
 /*      As far as I know, we must first modify elements in the object, then modify them in document,

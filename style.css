@@ -90,13 +90,13 @@
 }
 
 /*--------------------------this id (#loved) will be added by js ------------------*/
-#loved {
+#liked {
   color: red;
   position: relative;
   text-align: center;
   line-height: 15px;
 }
-#loved::after {
+#liked::after {
   content: "1";
   font-size: 7px;
   color: #fff;
