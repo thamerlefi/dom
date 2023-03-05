@@ -1,125 +1,132 @@
-*{
-    padding: 0;
-    margin: 0;
-    color: #fff;
+* {
+  padding: 0;
+  margin: 0;
+  color: #fff;
 }
 
-#root{
-    width: 80%;
-    margin: 20px auto;
-    background-color: #eaf0f2;
-    padding: 10px 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+#root {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #eaf0f2;
+  padding: 10px 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
-.title{
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    letter-spacing: 2px;
-    background-color: #004080;
-    padding: 5px 0;
-    border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+.title {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  letter-spacing: 2px;
+  background-color: #004080;
+  padding: 5px 0;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-
-.cart{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 10px;
-    padding: 15px 10px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+/*-------------------------------------------items ---------------------------------*/
+.cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 10px;
+  padding: 15px 10px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-.cart .quant{
-    background-color: #0075ff;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    line-height: 25px;
-    cursor: pointer;
-    user-select: none;
-    border-radius: 40%;
-    font-weight: bold;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3), 5px 5px 5px rgba(0,0,0,0.2), 10px 10px 10px rgba(0,0,0,0.1);
-
-}
-.cart button{
-    outline: none;
-    border: none;
-    background-color: red;
-    padding: 5px 10px;
-    cursor: pointer;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3), 5px 5px 5px rgba(0,0,0,0.2), 10px 10px 10px rgba(0,0,0,0.1);
-
-
-}
-.cart i{
-    cursor: pointer;
+.img {
+  height: 70px;
+  width: 70px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-#loved{
-    color: red;
-    position: relative;
-    text-align: center;
-    line-height: 15px;
-}
-#loved::after{
-    content: '1';
-    font-size: 7px;
-    color: #fff;
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: red;
-    bottom: 10px;
-    left: 14px;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3), 5px 5px 5px rgba(0,0,0,0.2), 10px 10px 10px rgba(0,0,0,0.1);
-
-}
-.subTotal{
-    background-color: #DF2E38;
-    border-radius: 5px;
-    padding: 5px 10px;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3), 5px 5px 5px rgba(0,0,0,0.2), 10px 10px 10px rgba(0,0,0,0.1);
+.num {
+  /* background-color: #DF2E38; */
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 9px;
+  border-radius: 5px;
 }
 
-.total{
-    margin: auto;
-    width: 80%;
-    display: flex;
-    flex-direction: row-reverse;
-}
-.total h4{
-    background-color: #004080;
-    padding: 10px 15px;
-    text-align: center;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3), 5px 5px 5px rgba(0,0,0,0.2), 10px 10px 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
-.img{
-    height: 70px;
-    width: 70px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-.num{
-    /* background-color: #DF2E38; */
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 5px 9px;
-    border-radius: 5px;
+.cart .quant {
+  background-color: #0075ff;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 40%;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
+    10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.empty{
-    color: black;
-    text-align: center;
-    width: 200px;
-    margin: auto;
-    opacity: 0.7;
+.subTotal {
+  background-color: #df2e38;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
+    10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart .del {
+  outline: none;
+  border: none;
+  background-color: red;
+  padding: 5px 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
+    10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.cart i {
+  cursor: pointer;
+}
+
+/*--------------------------this id (#loved) will be added by js ------------------*/
+#loved {
+  color: red;
+  position: relative;
+  text-align: center;
+  line-height: 15px;
+}
+#loved::after {
+  content: "1";
+  font-size: 7px;
+  color: #fff;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  bottom: 10px;
+  left: 14px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
+    10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*---------------------------------------- total ----------------------------------*/
+.total {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.total h4 {
+  background-color: #004080;
+  padding: 10px 15px;
+  text-align: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
+    10px 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.empty {
+  color: black;
+  text-align: center;
+  width: 200px;
+  margin: auto;
+  opacity: 0.7;
 }
