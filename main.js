@@ -1,6 +1,4 @@
-
 //declaration of items in array
-
 let items = [
   {id: 1,src: "1.jpg",name: "Oppo A20",price: "100",quantity: 1,liked: "unloved"},
   {id: 2,src: "2.jpg",name: "Dell Vostr",price: "200",quantity: 1,liked: "unloved"},
@@ -10,28 +8,28 @@ let items = [
 let container = document.getElementById("root");
 
 let total = 0; // total price
-let adore = 0; // number of total likes
+let adore = 0; // total number of likes
 
 //---------------------------------------------------------------------- show items
 function showData() {
-  // global function that will appear all of items (in #root)
-  let cartItems = "";
-  for (let i = 0; i < items.length; i++) {
+  // global function that will appear all of items (in #root elemnet)
+let cartItems = "";
+for (let i = 0; i < items.length; i++) {
     let item = items[i];
     cartItems += `
         <div class="cart">
             <img src="./img/${i + 1}.jpg" alt="${item.name}" title="${item.name}" class="img">
             <h5 class="num">${item.name}</h5>
-            <h5 class="price num">$ ${item.price}</h5>
-            <h5 class="quant minus" id="minus" onclick="decrBtn(${i})">-</h5>
+            <h5 class="num">$ ${item.price}</h5>
+            <h5 class="quant" onclick="decrBtn(${i})">-</h5>
             <h5 class="num">${item.quantity}</h5>
-            <h5 class="quant" id="plus" onclick="incrBtn(${i})">+</h5>
+            <h5 class="quant" onclick="incrBtn(${i})">+</h5>
             <h5 class="subTotal"">SubTotal: $ ${item.quantity * item.price}</h5>
             <button class="del" onclick="deleteItem(${i})">delete</button>
             <i class="fa-regular fa-heart" id="${item.liked}" onclick="loveReact(${i})"></i>
         </div>
         `;
-        // concatenation of all the container (title, items and total price with numbers of likes)
+    // concatenation of all the container (title, items and total price with numbers of likes)
     container.innerHTML = `<h1 class ="title">YOUR SHOPPING CART</h1> 
                             ${cartItems}
                             <div class="total">
@@ -41,10 +39,9 @@ function showData() {
     }
 }
 
-showData();
+showData(); // calling showData just when this file execute
 
 //---------------------------------------------------- delete items
-
 function deleteItem(i) {
   items.splice(i, 1);
   // if there is no items a new paragraph will display
@@ -57,14 +54,12 @@ function deleteItem(i) {
 }
 
 //---------------------------------------------------- total price
-
 function getTotal(i) {
   total += +items[i].price * +items[i].quantity;
   return total;
 }
 
 //--------------------------------------------------- increment quantity btn
-
 function incrBtn(i) {
   total = 0; // initialize total and adore before recalling showData
   adore = 0; //
@@ -73,7 +68,6 @@ function incrBtn(i) {
 }
 
 //-------------------------------------------------- decrement quantity btn
-
 function decrBtn(i) {
   if (items[i].quantity > 1) {
     total = 0;
@@ -84,7 +78,6 @@ function decrBtn(i) {
 }
 
 //--------------------------------------------------- love REACT
-
 function loveReact(i) {
   total = 0;
   adore = 0;
@@ -101,12 +94,10 @@ function numOfLikes(i) {
   if (adore === 0) return ""; // if there is no like so this element will not displayed 
   return `<h3 class="adore">Like : ${adore}</h3>`;
 }
-/* 
-As far as I know, we must first modify elements in the object, then modify them in document,
+/*      As far as I know, we must first modify elements in the object, then modify them in document,
 and in order to be able to modify the document we need to recal the function showData after each event to reshow the new uptade,
 and finally we need to reinitialize total price and number of likes after each event and before calling showData...
 so what do you think !!
 
 Thamer Lefi
-DOM checkpoint
-*/
+DOM checkpoint   */

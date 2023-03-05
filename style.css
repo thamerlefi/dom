@@ -67,6 +67,7 @@
 
 .subTotal {
   background-color: #df2e38;
+  font-size: 17px;
   border-radius: 5px;
   padding: 5px 10px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
