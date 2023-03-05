@@ -1,81 +1,85 @@
 let items = [
-    {id:1 , name: 'item 1', price: '10', quantity: 0},
-    {id:2 , name: 'item 2', price: '20', quantity: 0},
-    {id:3 , name: 'item 3', price: '30', quantity: 0},
-    {id:4 , name: 'item 4', price: '40', quantity: 0},
+    {id:1 , src: '1.jpg' ,name: 'Oppo A20', price: '10', quantity: 1, liked: 'unloved'},
+    {id:2 , src: '2.jpg' ,name: 'Dell Vostr', price: '20', quantity: 1, liked: 'unloved'},
+    {id:3 , src: '3.jpg' ,name: 'MinTablt', price: '30', quantity: 1, liked: 'unloved'},
+    {id:4 , src: '4.jpg' ,name: 'Sumsung-', price: '40', quantity: 1, liked: 'unloved'},
 ]
-
 let container = document.getElementById('root')
-for(let i=0;i<items.length;i++){
-    container.innerHTML += `
-    <div class="cart">
-        <h5>${items[i].name}</h5>
-        <h5 class="price">${items[i].price}</h5>
-        <h5 class="quant minus">-</h5>
-        <h5 class="num">${items[i].quantity}</h5>
-        <h5 class="quant plus">+</h5>
-        <button class="del">delete</button>
-        <i class="fa-regular fa-heart"></i>
-    </div>
-    `
+
+let total=0 ;
+
+//-------------------------------------------------- show items
+function showData(){
+    let table = ''
+    for(let i=0;i<items.length;i++){
+        table += `
+        <div class="cart">
+            <img src="./img/${i+1}.jpg" alt="${items[i].name}" title="${items[i].name}" class="img">
+            <h5 class="num">${items[i].name}</h5>
+            <h5 class="price num">$ ${items[i].price}</h5>
+            <h5 class="quant" id="minus" onclick="decrBtn(${i})">-</h5>
+            <h5 class="num">${items[i].quantity}</h5>
+            <h5 class="quant" id="plus" onclick="incrBtn(${i})">+</h5>
+            <h5 class="subTotal"">SubTotal: $ ${items[i].quantity*items[i].price}</h5>
+            <button class="del" onclick="deleteItem(${i})">delete</button>
+            <i class="fa-regular fa-heart" id="${items[i].liked}"  onclick="loveReact(${i})"></i>
+        </div>
+        `
+        container.innerHTML =`<h1 class ="title">YOUR SHOPPING CART</h1> 
+                    ${table} <div class="total"><h4>Total : $ ${getTotal(i)}</h4></div>`
+    }
+    if (items.length === 0) {
+        container.innerHTML = `<h1 class="empty">Your cart is Empty !!</h1>`
+    }
+}
+showData()
+
+
+
+//---------------------------------------------------- delete items
+
+function deleteItem(i){
+    items.splice(i,1)
+    if(items.length<1) {
+        container.innerHTML = ''
+    }
+    total = 0
+    showData()
 }
 
-// remove element
+//---------------------------------------------------- total price
 
-let deleteItems = document.querySelectorAll('.del')
-for(let i=0;i<deleteItems.length;i++){
-    let deleteItem = deleteItems[i]
-    deleteItem.addEventListener('click', (event) =>{
-        let targ = event.target
-        targ.parentElement.remove()
-    })
+function getTotal(i){
+    
+    total += +items[i].price * +items[i].quantity
+    return total
 }
 
-// like icons
-let likes = document.querySelectorAll('.cart i')
-for(let i=0;i<likes.length;i++){
-    let like = likes[i]
-    like.addEventListener('click',(event) =>{
-        let liked = event.target
-        liked.classList.toggle('love')
-    })
+//--------------------------------------------------- increment quantity btn
+
+function incrBtn(i){
+    total = 0
+    items[i].quantity ++
+    showData()
+    
 }
 
-// increm quant
-let total = document.querySelector('.total');
+//-------------------------------------------------- decrement quantity btn
 
-let pluss = document.querySelectorAll('.plus')
-let num = document.querySelectorAll('.num')
-let price = document.querySelectorAll('.price')
-let endTotal = 0
-for(let i=0;i<pluss.length;i++){
-    let prices = price[i].innerText
-    let plus = pluss[i]
-    plus.addEventListener('click', (event) =>{
-        let inc = event.target
-            inc.previousElementSibling.innerText++
-            price[i].innerText = prices * +inc.previousElementSibling.innerText
-            endTotal +=  +prices
-            total.innerText = `Total $${endTotal}`
-        })
-        
+function decrBtn(i){
+    if (items[i].quantity > 0){
+        total = 0
+        items[i].quantity--
+        showData()
+    }
 }
 
-// decrem quant
+//--------------------------------------------------- love REACT
 
-let minuss = document.querySelectorAll('.minus')
-for(let i=0;i<minuss.length;i++){
-    let prices = price[i].innerText
-    let minus = minuss[i]
-    minus.addEventListener('click', (event) =>{
-       if (minus.nextElementSibling.innerText >0){
-        let inc = event.target
-            inc.nextElementSibling.innerText--
-            price[i].innerText = prices * +inc.nextElementSibling.innerText
-            endTotal -=  +prices
-            total.innerText = `Total $${endTotal}`
-       }
-    })
+function loveReact(i){
+    total=0
+    if(items[i].liked === 'unloved'){
+        items[i].liked = 'loved'
+    } else items[i].liked = 'unloved'
+    showData()
 }
-
-//total
