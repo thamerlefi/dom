@@ -1,8 +1,8 @@
 //declaration of items in array
 let items = [
-  {id:1 ,src: "1.jpg", name: "Oppo A20",   price: "100", quantity:1 ,isLiked: "unliked"},
+  {id:1 ,src: "1.jpg", name: "Oppo AA",   price: "100", quantity:1 ,isLiked: "unliked"},
   {id:2 ,src: "2.jpg", name: "Dell Vostr", price: "200", quantity:1 ,isLiked: "unliked"},
-  {id:3 ,src: "3.jpg", name: "MinTablt",   price: "100", quantity:1 ,isLiked: "unliked"},
+  {id:3 ,src: "3.jpg", name: "MinI-Tablt",   price: "100", quantity:1 ,isLiked: "unliked"},
   {id:4 ,src: "4.jpg", name: "Sumsung-",   price: "100", quantity:1 ,isLiked: "unliked"},
 ];
 
@@ -25,7 +25,9 @@ for (let i = 0; i < items.length; i++) {
             <h5 class="num">${item.quantity}</h5>
             <h5 class="quant" onclick="incrBtn(${i})">+</h5>
             <h5 class="subTotal">SubTotal: $ ${item.quantity * item.price}</h5>
-            <button class="del" onclick="deleteItem(${i})">delete</button>
+            <button class="del" onclick="deleteItem(${i})">
+              <i class="fa-sharp fa-solid fa-trash" title="delete this product from panier"></i>
+            </button>
             <i class="fa-regular fa-heart" id="${item.isLiked}" onclick="loveReact(${i})"></i>
         </div>
         `;

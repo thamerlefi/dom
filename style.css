@@ -3,6 +3,7 @@
   margin: 0;
   color: #fff;
   cursor:context-menu;
+  font-family: sans-serif;
 }
 
 #root {
@@ -50,7 +51,7 @@
   border-radius: 5px;
 }
 
-.cart .quant {
+.quant {
   background-color: #0075ff;
   display: inline-block;
   width: 25px;
@@ -59,10 +60,13 @@
   line-height: 25px;
   cursor: pointer;
   user-select: none;
-  border-radius: 40%;
+  border-radius: 50%;
   font-weight: bold;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
     10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.quant:hover{
+  border-radius: 40%;
 }
 
 .subTotal {
@@ -74,27 +78,40 @@
     10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.cart .del {
-  outline: none;
-  border: none;
-  background-color: red;
-  padding: 5px 10px;
-  cursor: pointer;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.2),
-    10px 10px 10px rgba(0, 0, 0, 0.1);
-}
+/*----------------------icons (delete and like)--------------------*/
 .cart i {
   cursor: pointer;
   font-size: 20px;
   color: #0075ff;
+  transition: 0.5s;
+}
+.fa-heart:hover{
+  transform: rotateZ(-345deg);
+}
+/*--------------------- delete button -----------------------------------*/
+.del {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.del i{
+  color: #837e7e;
+  opacity: 0.6;
+  transition: 0.15s;
+}
+.del i:hover{
+  color: red;
+  transform: scale(1.1);
 }
 
-/*--------------------------this id (#loved) will be added by js ------------------*/
+/*--------------------------this id (#liked) will be added by js ------------------*/
+
 #liked {
   color: red;
   position: relative;
   text-align: center;
   line-height: 15px;
+  transform: rotateZ(15deg);
 }
 #liked::after {
   content: "1";
@@ -114,10 +131,10 @@
 /*---------------------------------------- total ----------------------------------*/
 .total {
   margin: auto;
-  
   display: flex;
   justify-content: end;
 }
+/*---------total----------*/
 .total h4 {
   background-color: #004080;
   padding: 10px 15px;
@@ -126,6 +143,7 @@
     10px 10px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+/*---------like-----------*/
 .total h3{
     background-color: #f33554;
     margin:0 30px;
@@ -136,9 +154,10 @@
 }
 
 .empty {
-  color: black;
+  color: #575555;
   text-align: center;
   width: 200px;
   margin: auto;
-  opacity: 0.7;
+  opacity: 0.6;
 }
+
