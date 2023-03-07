@@ -17,7 +17,7 @@ total = 0;
 for (let i = 0; i < items.length; i++) {
     let item = items[i];
     cartItems += `
-        <div class="cart">
+        <div class="cart cart${item.isLiked}">
             <img src="./img/${item.src}" alt="${item.name}" title="${item.name}" class="img">
             <h5 class="num">${item.name}</h5>
             <h5 class="num">$ ${item.price}</h5>
@@ -32,7 +32,7 @@ for (let i = 0; i < items.length; i++) {
         </div>
         `;
     // concatenation of all the container (title, items, total price and numbers of likes)
-    container.innerHTML = `<h1 class ="title">YOUR SHOPPING CART</h1> 
+    container.innerHTML = `<h1 class ="title">YOUR SHOPPING CART (${items.length})</h1> 
                             ${cartItems}
                             <div class="total">
                                 <h4>Total : $ ${getTotal(i)}</h4>
